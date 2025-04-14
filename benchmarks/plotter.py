@@ -30,7 +30,7 @@ def main():
     # print(df.loc[mask])
     # print(df.loc[mask, "time"])
     fig, axs = plt.subplots(1, 1, figsize=(10, 6), layout="constrained")
-    fig.suptitle(f"Runtime vs. Time Series Length channels: 1")
+    fig.suptitle(f"Runtime vs. Time Series Length (channels: 1)")
     axs.set_title("sbd")
     axs.set_xlabel("time series length")
     axs.set_ylabel("runtime (s)")
@@ -66,7 +66,7 @@ def main():
     axs.legend()
 
     fig, axs = plt.subplots(1, 1, figsize=(10, 6), layout="constrained")
-    fig.suptitle(f"Runtime vs. Time Series Length channels: 2")
+    fig.suptitle(f"Runtime vs. Time Series Length (channels: 2)")
     axs.set_title("sbd")
     axs.set_xlabel("time series length")
     axs.set_ylabel("runtime (s)")
@@ -102,9 +102,9 @@ def main():
     axs.legend()
 
     fig, axs = plt.subplots(1, 1, figsize=(10, 6), layout="constrained")
-    fig.suptitle(f"Runtime vs. Time Series timepoints: 1000")
+    fig.suptitle(f"Runtime vs. No of channels (timepoints: 1000)")
     axs.set_title("sbd")
-    axs.set_xlabel("time series length")
+    axs.set_xlabel("no of channels")
     axs.set_ylabel("runtime (s)")
     for distance_func in df["distance_func"].unique():
         print(distance_func)

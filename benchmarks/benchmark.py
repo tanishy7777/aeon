@@ -38,19 +38,19 @@ def main():
     timepoints_options = [10, 100, 1000, 10000, 25000]
     channel_options = [1, 10, 100, 1000, 5000]
 
-    # warmup for Numba JIT
-    print("Warming up Numba JIT...")
-    ts1 = rng.random(100)
-    ts2 = rng.random(100)
-    for i in [1, 2, 5, 10]:
-        for func in distance_funcs:
-            # univariate
-            func(ts1.reshape(1, -1), ts2.reshape(1, -1))
-            # multivariate
-            func(ts1.reshape(i, -1), ts2.reshape(i, -1))
+    # # warmup for Numba JIT
+    # print("Warming up Numba JIT...")
+    # ts1 = rng.random(100)
+    # ts2 = rng.random(100)
+    # for i in [1, 2, 5, 10]:
+    #     for func in distance_funcs:
+    #         # univariate
+    #         func(ts1.reshape(1, -1), ts2.reshape(1, -1))
+    #         # multivariate
+    #         func(ts1.reshape(i, -1), ts2.reshape(i, -1))
 
-    time.sleep(2)
-    print("...done.")
+    # time.sleep(2)
+    # print("...done.")
 
     print("Starting benchmark (univariate)...")
     results = []
