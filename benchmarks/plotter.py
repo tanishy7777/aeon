@@ -29,7 +29,7 @@ def main():
     # mask = df["type"] == 3
     # print(df.loc[mask])
     # print(df.loc[mask, "time"])
-    fig, axs = plt.subplots(1, 1, figsize=(10, 6), layout="constrained")
+    fig, axs = plt.subplots(1, 1, figsize=(6, 4), layout="constrained")
     fig.suptitle(f"Runtime vs. Time Series Length (channels: 1)")
     axs.set_title("sbd")
     axs.set_xlabel("time series length")
@@ -65,7 +65,7 @@ def main():
 
     axs.legend()
 
-    fig, axs = plt.subplots(1, 1, figsize=(10, 6), layout="constrained")
+    fig, axs = plt.subplots(1, 1, figsize=(6, 4), layout="constrained")
     fig.suptitle(f"Runtime vs. Time Series Length (channels: 2)")
     axs.set_title("sbd")
     axs.set_xlabel("time series length")
@@ -101,7 +101,7 @@ def main():
             )
     axs.legend()
 
-    fig, axs = plt.subplots(1, 1, figsize=(10, 6), layout="constrained")
+    fig, axs = plt.subplots(1, 1, figsize=(6, 4), layout="constrained")
     fig.suptitle(f"Runtime vs. No of channels (timepoints: 1000)")
     axs.set_title("sbd")
     axs.set_xlabel("no of channels")
