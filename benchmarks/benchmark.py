@@ -8,8 +8,9 @@ import pandas as pd
 from benchmarks.sbd_distances import (
     sbd_distance,
     sbd_distance_fix,
-    sbd_original,
-    sbd_tslearn,
+    sbd_distance_pr2715
+    # sbd_original,
+    # sbd_tslearn,
 )
 
 
@@ -32,25 +33,26 @@ def main():
     distance_funcs = [
         sbd_distance,
         sbd_distance_fix,
-        sbd_original,
-        sbd_tslearn,
+        sbd_distance_pr2715
+        # sbd_original,
+        # sbd_tslearn,
     ]
     timepoints_options = [10, 100, 1000, 10000, 25000]
     channel_options = [1, 10, 100, 1000, 5000]
 
-    # # warmup for Numba JIT
-    # print("Warming up Numba JIT...")
-    # ts1 = rng.random(100)
-    # ts2 = rng.random(100)
-    # for i in [1, 2, 5, 10]:
-    #     for func in distance_funcs:
-    #         # univariate
-    #         func(ts1.reshape(1, -1), ts2.reshape(1, -1))
-    #         # multivariate
-    #         func(ts1.reshape(i, -1), ts2.reshape(i, -1))
+    # warmup for Numba JIT
+    print("Warming up Numba JIT...")
+    ts1 = rng.random(100)
+    ts2 = rng.random(100)
+    for i in [1, 2, 5, 10]:
+        for func in distance_funcs:
+            # univariate
+            func(ts1.reshape(1, -1), ts2.reshape(1, -1))
+            # multivariate
+            func(ts1.reshape(i, -1), ts2.reshape(i, -1))
 
-    # time.sleep(2)
-    # print("...done.")
+    time.sleep(2)
+    print("...done.")
 
     print("Starting benchmark (univariate)...")
     results = []
@@ -61,15 +63,14 @@ def main():
             ts1 = rng.random((n_channels, n_timepoints))
             ts2 = rng.random((n_channels, n_timepoints))
             print(f"    input=({n_channels}, {n_timepoints}): ", end="")
-            if func == sbd_tslearn or func == sbd_original:
-                print("tslearn or original", func)
-                ts1 = ts1.T
-                ts2 = ts2.T
-                best = _timeit(lambda: func(ts1, ts2))
-                best = _timeit(lambda: func(ts1, ts2))
-            else:
-                print("aeon buggy/fixed", func)
-                best = _timeit(lambda: func(ts1, ts2, standardize=False))
+            # if func == sbd_tslearn or func == sbd_original:
+            #     print("tslearn or original", func)
+            #     ts1 = ts1.T
+            #     ts2 = ts2.T
+            #     best = _timeit(lambda: func(ts1, ts2))
+            # else:
+            print("aeon buggy/fixed", func)
+            best = _timeit(lambda: func(ts1, ts2, standardize=False))
 
             results.append(
                 {
